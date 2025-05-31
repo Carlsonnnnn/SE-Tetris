@@ -914,6 +914,8 @@ def main():
     screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     pygame.display.set_caption("Tetris Boss Fight")
     clock = pygame.time.Clock()
+    pygame.mixer.music.load('music/tetrizz.mp3')
+    pygame.mixer.music.play(-1)
     
     # Show mode selection
     font = pygame.font.Font(None, 48)
@@ -954,6 +956,8 @@ def main():
                     boss_mode = False
                     mode_selected = True
                 elif event.key == pygame.K_2:
+                    pygame.mixer.music.load('music/TETrizzz.mp3')
+                    pygame.mixer.music.play(-1)
                     boss_mode = True
                     mode_selected = True
                 elif event.key == pygame.K_ESCAPE:
