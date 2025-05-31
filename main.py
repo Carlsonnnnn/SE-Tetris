@@ -413,6 +413,8 @@ class TetrisGame:
         # Add line clear animation
         if lines_to_clear:
             self.line_clear_animation = lines_to_clear[:]
+            self.pending_line_clears = lines_to_clear[:]
+            self.line_clear_timer = 0 
             # Add particles for line clear effect
             for y in lines_to_clear:
                 for x in range(GRID_WIDTH):
