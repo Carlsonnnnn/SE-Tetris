@@ -538,6 +538,8 @@ class TetrisGame:
         if self.line_clear_animation and self.animation_time > 300:
             if self.pending_line_clears:
                 # Clear lines (clear from bottom to top to avoid index shifting issues)
+                clear_effect = pygame.mixer.Sound('sfx/dropop.wav')
+                clear_effect.play()
                 lines_cleared = len(self.pending_line_clears)
                 for y in sorted(self.pending_line_clears, reverse=True):
                     del self.grid[y]
@@ -591,6 +593,8 @@ class TetrisGame:
         return True
     
     def hard_drop(self):
+        drop_effect = pygame.mixer.Sound('sfx/dblock.mp3')
+        drop_effect.play()
         drop_distance = 0
         while self.move_piece(0, 1):
             drop_distance += 1
@@ -914,8 +918,9 @@ def main():
     screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     pygame.display.set_caption("Tetris Boss Fight")
     clock = pygame.time.Clock()
-    pygame.mixer.music.load('music/tetrizz.mp3')
+    pygame.mixer.music.load('music/menutet.mp3')
     pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.4)
     
     # Show mode selection
     font = pygame.font.Font(None, 48)
@@ -953,11 +958,15 @@ def main():
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
+                    pygame.mixer.music.load('music/tetrizz.mp3')
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.5)
                     boss_mode = False
                     mode_selected = True
                 elif event.key == pygame.K_2:
                     pygame.mixer.music.load('music/TETrizzz.mp3')
                     pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.5)
                     boss_mode = True
                     mode_selected = True
                 elif event.key == pygame.K_ESCAPE:
