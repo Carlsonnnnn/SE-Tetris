@@ -205,8 +205,8 @@ class Boss:
         # Boss attacks
         self.attacks = {
             1: ['garbage_lines', 'speed_boost'],
-            2: ['garbage_lines', 'speed_boost', 'piece_corruption', 'grid_shake'],
-            3: ['garbage_lines', 'speed_boost', 'piece_corruption', 'grid_shake', 'piece_theft', 'time_pressure']
+            2: ['garbage_lines', 'speed_boost', 'grid_shake'],
+            3: ['garbage_lines', 'speed_boost', 'grid_shake', 'piece_theft', 'time_pressure']
         }
     
     def take_damage(self, damage):
@@ -916,7 +916,7 @@ class TetrisGame:
 
 def main():
     screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-    pygame.display.set_caption("Tetris Boss Fight")
+    pygame.display.set_caption("Tetrizz")
     clock = pygame.time.Clock()
     pygame.mixer.music.load('music/menutet.mp3')
     pygame.mixer.music.play(-1)
@@ -933,7 +933,7 @@ def main():
         screen.fill(BACKGROUND)
         
         # Title
-        title_text = title_font.render("TETRIS BOSS FIGHT", True, ACCENT)
+        title_text = title_font.render("TETRIZZ", True, ACCENT)
         title_rect = title_text.get_rect(center=(WINDOW_WIDTH // 2, 150))
         screen.blit(title_text, title_rect)
         
